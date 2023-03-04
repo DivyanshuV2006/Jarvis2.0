@@ -20,7 +20,6 @@ from askgpt import askGPT
 from email_function import sendGmail
 from email_send import email
 
-sendGmail()
 load_dotenv()
 
 EMAIL = os.getenv('EMAIL')
