@@ -1,6 +1,7 @@
 #premade modules
-import wikipedia #pip install wikipedia
 import webbrowser#pip install webbrowser
+import os
+import wikipedia #pip install wikipedia
 import os
 import pyautogui#pip install pyautogui
 import keyboard
