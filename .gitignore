@@ -1,4 +1,4 @@
 .env
 export.bat
 import.bat
-__pycache__
+./__pycache__
