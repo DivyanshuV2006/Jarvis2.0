@@ -17,15 +17,14 @@ from speak import speak
 from take_command import takeCommand
 from wish_me import wishMe
 from askgpt import askGPT
-from email_function import sendGmail
 from email_send import email
+from music import music
 
 load_dotenv()
 
 EMAIL = os.getenv('EMAIL')
 PERSON1 = os.getenv('PERSON1')
 PERSON2 = os.getenv('PERSON2')
-GPT = os.getenv("GPT")
 
 
 if __name__ == "__main__":
@@ -107,10 +106,7 @@ if __name__ == "__main__":
                 strTime = datetime.datetime.now().strftime("%H:%M:%S")    
                 speak(f"Sir, the time is {strTime}")
             elif 'play music' in query:
-                music_dir = 'C:\\Users\\Praveen verma\\Music\\My Songs'
-                songs = os.listdir(music_dir)
-                print(songs)    
-                os.startfile(os.path.join(music_dir, songs[0]))
+                music()
             elif 'quit current app' in query or 'close app' in query:
                 pyautogui.hotkey('alt','f4')
             elif 'type' in query:
