@@ -1,8 +1,7 @@
-#premade modules
+'''#premade modules
 import webbrowser#pip install webbrowser
 import os
 import wikipedia #pip install wikipedia
-import os
 import pyautogui#pip install pyautogui
 import keyboard
 import site
@@ -149,4 +148,101 @@ if __name__ == "__main__":
                 email(EMAIL)
             else:
                 askGPT(query)
+                print('\n')'''
+
+#premade modules
+import webbrowser#pip install webbrowser
+import os
+import wikipedia #pip install wikipedia
+import os
+import pyautogui#pip install pyautogui
+import keyboard
+import site
+import pathlib
+from googlesearch import search
+import time 
+import os.path
+import datetime
+from dotenv import load_dotenv
+
+#file modules
+from speak import speak
+from take_command import takeCommand
+from wish_me import wishMe
+from askgpt import askGPT
+from email_send import email
+from music import music
+
+#threading module 
+import threading #<-- added this line
+
+load_dotenv()
+
+EMAIL = os.getenv('EMAIL')
+PERSON1 = os.getenv('PERSON1')
+PERSON2 = os.getenv('PERSON2')
+
+
+if __name__ == "__main__":
+    #wishMe()
+    while True:
+    # if 1:
+        query = takeCommand().lower()
+
+        if 'jarvis' in query:
+            
+            query = query.replace('jarvis', '')
+            # Logic for executing tasks based on query
+            
+            #create a function for each task 
+            def search_wikipedia():
+                speak('Searching Wikipedia...')
+                query = query.replace("wikipedia", "")
+                try:
+                    results = wikipedia.summary(query, sentences=2)
+                    speak("According to wikipedia")
+                    print(results)
+                    speak(results)
+                except Exception as e:
+                    print('sorry no such results found')
+                    speak('sorry no such results found')
+
+            def pause():
+                speak('Paused')
+                os.system("pause")
+
+            def quit():
+                speak('Quitting')
+                os._exit(0) 
+
+            def ask_gpt():
+                query = query.replace('ask gpt ', "")
+                askGPT(query)
                 print('\n')
+
+            def open_site():
+                query = query.replace('open ','').strip().lower()
+                print(query)
+                if query == 'youtube':
+                    webbrowser.open("youtube.com")
+                
+            
+            #create a dictionary of tasks and functions 
+            tasks = {
+                'search wikipedia for': search_wikipedia,
+                'pause': pause,
+                'quit': quit,
+                'ask gpt ': ask_gpt,
+                'open ': open_site,
+                
+            }
+
+            #find the matching task for the query 
+            for task, function in tasks.items():
+                if task in query:
+                    #create a new thread object with the function and arguments 
+                    t = threading.Thread(target=function) 
+                    #start the thread's activity 
+                    t.start()
+                    #wait for the thread to finish (optional)
+                    t.join()
