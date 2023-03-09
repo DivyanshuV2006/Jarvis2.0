@@ -1,4 +1,4 @@
-'''#premade modules
+#premade modules
 import webbrowser#pip install webbrowser
 import os
 import wikipedia #pip install wikipedia
@@ -148,8 +148,8 @@ if __name__ == "__main__":
                 email(EMAIL)
             else:
                 askGPT(query)
-                print('\n')'''
-
+                print('\n')
+'''
 #premade modules
 import webbrowser#pip install webbrowser
 import os
@@ -245,4 +245,4 @@ if __name__ == "__main__":
                     #start the thread's activity 
                     t.start()
                     #wait for the thread to finish (optional)
-                    t.join()
+                    t.join()'''
