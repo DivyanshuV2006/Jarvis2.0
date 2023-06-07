@@ -150,3 +150,4 @@ def main():
                 else:
                     askGPT(query)
                     print('\n')
+main()
