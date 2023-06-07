@@ -1,8 +1,9 @@
 import openai
-import dotenv
+from dotenv import load_dotenv
 import os
 from speak import speak
 
+load_dotenv()
 GPT = os.getenv("GPT")
 
 def askGPT(text):
