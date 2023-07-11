@@ -64,14 +64,6 @@ def main():
                     print(query)
                     if query == 'youtube':
                         webbrowser.open_new_tab("http://www.youtube.com")
-                    elif query == 'lake travis login page' or query == 'lake travis home page' or query == 'lake travis login':
-                        webbrowser.open_new_tab('https://myapps.classlink.com/home')
-                        time.sleep(2)
-                        #keyboard.write('S125307')
-                        #time.sleep(1)
-                        keyboard.press('Enter')
-                        #time.sleep(1)
-                        #keyboard.press('enter')
                     elif query == 'google':
                         webbrowser.open_new_tab("http://www.google.com")
                     elif query == 'terraria':
