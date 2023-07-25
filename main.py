@@ -116,7 +116,10 @@ def main():
                     speak("are you sure sir? this command will shutdown the entire system.")
                     command = takeCommand()
                     if 'yes' in command:
-                        os.system("shutdown /s /t 1")
+                        speak("Please give me the shutdown password")
+                        command = takeCommand()
+                        if '7233' in command:
+                            os.system("shutdown /s /t 1")
                     else:
                         speak("Command aborted")
                 elif 'restart' in query:
