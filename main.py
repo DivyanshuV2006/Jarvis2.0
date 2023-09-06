@@ -33,7 +33,6 @@ def main():
         # if 1:
             global query
             query = takeCommand().lower()
-            
             if 'jarvis' in query:
 
                 query = query.replace('jarvis', '')
@@ -99,7 +98,7 @@ def main():
                     strTime = datetime.datetime.now().strftime("%H:%M:%S")    
                     speak(f"Sir, the time is {strTime}")
                 elif 'play music' in query:
-                    music()
+                    music("C:\\Users\\divya\\Music\\Music")
                 elif 'quit current app' in query or 'close app' in query:
                     pyautogui.hotkey('alt','f4')
                 elif 'type' in query: #in progress
@@ -117,8 +116,8 @@ def main():
                     command = takeCommand()
                     if 'yes' in command:
                         speak("Please give me the shutdown password")
-                        command = takeCommand()
-                        if '7233' in command:
+                        command = takeCommand().lower()
+                        if 'jarvis' in command:
                             os.system("shutdown /s /t 1")
                     else:
                         speak("Command aborted")
