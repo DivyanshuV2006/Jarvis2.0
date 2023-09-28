@@ -19,12 +19,14 @@ from wish_me import wishMe
 from askgpt import askGPT
 from email_send import email
 from music import music
+import asyncio
 
 load_dotenv()
 
 EMAIL = os.getenv('EMAIL')
 PERSON1 = os.getenv('PERSON1')
 PERSON2 = os.getenv('PERSON2')
+Teacher = os.getenv('Teacher')
 
 def main():
     if __name__ == "__main__":
@@ -141,6 +143,8 @@ def main():
                     email(PERSON2)
                 elif 'email to myself' in query:
                     email(EMAIL)
+                elif 'email to S' in query:
+                    email(Teacher)
                 else:
                     askGPT(query)
                     print('\n')
