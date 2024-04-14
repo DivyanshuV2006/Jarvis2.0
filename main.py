@@ -13,6 +13,7 @@ import datetime
 from dotenv import load_dotenv
 import threading
 #file modules
+from app import openApp
 from speak import speak
 from take_command import takeCommand
 from wish_me import wishMe
@@ -61,8 +62,13 @@ def main():
                         askGPT(query)
                         print('\n')
                 elif 'open ' in query :
+                    
+                    
                     query = query.replace('open ','').strip().lower()
                     print(query)
+                    
+                    openApp(query)
+                    '''
                     if query == 'youtube':
                         webbrowser.open_new_tab("http://www.youtube.com")
                     elif query == 'google':
@@ -93,7 +99,7 @@ def main():
                         codePath = "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Streamlabs Desktop.lnk"
                         os.startfile(codePath)
                     else:
-                        webbrowser.open_new_tab(query)
+                        webbrowser.open_new_tab(query)'''
                 elif 'wish me' in query:
                     wishMe()    
                 elif 'time' in query:
