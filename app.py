@@ -1,28 +1,28 @@
-import os
+from speak import speak
 
-def openApp(app_name):
-    # Split the PATH variable into a list of directories
-    path_dirs = os.environ["PATH"].split(os.pathsep)
+def openApp(user_input):
+    file_path = "C:\\executable_files.txt"
+    try:
+        with open(file_path, "r") as file:
+            executable_paths = file.readlines()
+    except FileNotFoundError:
+        speak(f"Error: {file_path} not found.")
+        return
 
-    # Search for the app in each directory in the PATH
-    for path_dir in path_dirs:
-        # Construct the full path to the app executable
-        app_path = os.path.join(path_dir, app_name + ".exe")
+    user_input = user_input.lower() + ".exe"
 
-        # Check if the app exists at the constructed path
-        if os.path.exists(app_path):
-            # If found, try to open the app
+    found = False
+    for path in executable_paths:
+        if path.lower().strip().endswith(user_input):
+            found = True
             try:
-                os.startfile(app_path)
-                print(f"Opened {app_name} successfully.")
-                return
-            except OSError as e:
-                print(f"Error: {e}")
-                return
+                import subprocess
+                subprocess.Popen(path.strip())
+                print(path.strip())
+                speak(f"Opening {user_input}...")
+            except Exception as e:
+                speak(f"Error opening {user_input}: {e}")
+            break
 
-    # If the app is not found in any directory in the PATH
-    print(f"Could not find {app_name} in PATH.")
-
-
-    # If the app is not found
-    print(f"Could not find {app_name}.")
+    if not found:
+        speak(f"Application '{user_input}' not found in {file_path}.")
